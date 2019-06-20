@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Padrão para o head-->
+	<title>Mosaico</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Linkando arquivos externos-->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Load Babel -->
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<!-- Favicon para navegadores-->
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="manifest" href="favicon/site.webmanifest">
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="theme-color" content="#ffffff">
+	
+</head>
+
+<body>
+
+	<!-- HOME -->
+
+	<!-- Função para trocar ícone da home no nav-->
+	<script text/javascript>
+
+		function trocaimagem1() {
+  		document.getElementById("homeicon").src = "images/menu-icon.png";
+		}
+
+		function trocaimagem2() {
+  		document.getElementById("homeicon").src = "images/menu-icon-white.png";
+		}
+	</script>
+
+	<nav>
+		<a href="#home"><img id="homeicon" src="images/menu-icon-white.png" onmouseover="trocaimagem1()" onmouseout="trocaimagem2()"></a>
+		<a id="link-equipe" href="#equipe" onclick="trocaVermelho()">Equipe</a>
+		<a id="link-servicos" href="#servicos" onclick="trocaAmarelo()">Serviços</a>
+		<a id="link-trabalhos" href="#trabalhos" onclick="trocaVerde()">Trabalhos</a>
+		<a id="link-contato" href="#contato" onclick="trocaAzul()">Contato</a>
+	</nav>
+
+	<div id="home">
+		<div id="home-content">
+			<img id="logohome" src="images/main-logo.png" alt="mosaico">
+			<p id="apresentacao">Se o cristal da sua criatividade quebrar, faça dele um mosaico</p>
+			<a href="#equipe"><img id="scroll-down" src="images/scroll-down.png" alt="scroll icon"></a>
+		</div>
+	</div>
+
+	<!-- EQUIPE -->
+
+	<div id="equipe">
+
+		<h1 class="secction-title">Equipe</h1>
+
+		<p class="secction-text"><b>Olá! Prazer em conhecer você.</b> Somos a Mosaico, uma startup criada por alunos do curso de Sistemas e Mídias Digitais da Universidade Federal do Ceará. Entregamos diversos tipos de soluções digitais para você.</p>
+
+		<!-- Código para efeito 3D de parallax no board de membros da equipe-->
+		<script type="text/babel">
+			const cards = document.querySelector(".cards");
+			const images = document.querySelectorAll(".card__img");
+			const backgrounds = document.querySelectorAll(".card__bg");
+			const range = 40;
+
+			const calcValue = (a, b) => (a/b*range-range/2).toFixed(1)
+
+			let timeout;
+			document.addEventListener('mousemove', ({x, y}) => {
+  			if (timeout) {
+    		window.cancelAnimationFrame(timeout);
+  			}
+  	
+  			timeout = window.requestAnimationFrame(() => {
+    		const yValue = calcValue(y, window.innerHeight);
+    		const xValue = calcValue(x, window.innerWidth);
+
+    		cards.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
+
+    		[].forEach.call(images, (image) => {
+     		image.style.transform = `translateX(${-xValue}px) translateY(${yValue}px)`;
+    		});
+
+    		[].forEach.call(backgrounds, (background) => {
+     		 background.style.backgroundPosition = `${xValue*.45}px ${-yValue*.45}px`;
+    		})
+			})
+			}, false);
+		</script>
+
+		<!-- Sessão de cards com efeito parallax -->
+
+		<div class="cards">
+
+  			<h1 id="board-title">Conheça os nossos membros</h1>
+
+  			<div class="card card__one">
+    			<div class="card__bg"></div>
+    			<img class="card__img" src="images/sander.png"/>
+    			<div class="card__text">
+      				<p class="card__title">Alessander Aquino</p>
+      				<p class="card__subtitle">Atendimento e Conteudista</p>
+    			</div>
+  			</div>
+
+  			<div class="card card__two">
+    			<div class="card__bg"></div>
+    			<img class="card__img" src="images/diogo.png"/>
+    		<div class="card__text">
+      			<p class="card__title">Diogo Araripe</p>
+      			<p class="card__subtitle">Designer</p>
+    		</div>
+  			</div>
+
+  		<div class="card card__three">
+    		<div class="card__bg"></div>
+    		<img class="card__img" src="images/manel.png"/>
+    		<div class="card__text">
+      			<p class="card__title">Emanuel Mota</p>
+      			<p class="card__subtitle">Conteudista e Testador</p>
+    		</div>
+  		</div>
+
+  	 	<div class="card card__four">
+    		<div class="card__bg"></div>
+    		<img class="card__img" src="images/rennan.png"/>
+    		<div class="card__text">
+      			<p class="card__title">Francisco Rennan</p>
+      			<p class="card__subtitle">Programador</p>
+    		</div>
+  		</div>
+
+  		<div class="card card__five">
+    		<div class="card__bg"></div>
+    		<img class="card__img" src="images/neto.png"/>
+    		<div class="card__text">
+      			<p class="card__title">Neto Ribeiro</p>
+      			<p class="card__subtitle">Atendimento e Designer</p>
+    		</div>
+  		</div>
+
+		</div>
+
+	</div>
+
+<!-- SERVIÇOS -->
+
+	<div id="servicos">
+
+		<div id="textos-servicos">
+
+			<h1 class="secction-title" id="tituloservicos">Serviços para seu sucesso.</h1>
+			<p class="secction-text" id="subtituloservicos">A Mosaico baseia-se em metodologias como: Design Thinking e Scrum para realizar seu projeto,
+ 			garantindo a qualidade do seu projeto dentro do prazo para entrega.</p>
+
+ 		</div>
+
+ 		<div id="board-servicos">
+
+ 			<div class="servico-card">
+ 				<img class="servico-icon" src="images/website.png" alt="computer">
+ 				<h2 class="servico-titulo">Websites</h2>
+ 				<p>Nossos websites são intuitivos e possuem uma tecnologia mais avançada de busca. Assim o seu site é encontrado com bem mais facilidade.</p>
+ 			</div>
+
+ 			<div class="servico-card">
+ 				<img class="servico-icon" src="images/logo.png" alt="drawing tablet">
+ 				<h2 class="servico-titulo">Logos</h2>
+ 				<p>Criamos identidades visuais fantásticas, com a sua cara. Baseado no desenvolvimento de design thinking, acompanhando o cliente  em todas as fases do desenvolvimento.</p>
+ 			</div>
+
+ 			<div class="servico-card">
+ 				<img class="servico-icon" src="images/app.png" alt="layout">
+ 				<h2 class="servico-titulo">Aplicações</h2>
+ 				<p>Desenvolvemos softwares digitais  bastante funcionais, com mescla perfeita entre design funcionalidade trabalhando a experiência do usuário como foco principal.</p>
+ 			</div>
+ 		</div>
+
+	</div>
+
+<!-- TRABALHOS -->
+	
+	<!--Função para trocar ícone da nav para a cor da sessão (verde)-->
+
+	<div id="trabalhos">
+
+		<h1 id="titulo-trabalhos">Trabalhos</h1>
+
+		<a href="trabalhos.html" id="redirecionar">Clique aqui para conhecer</a>
+
+		<video poster="images/video-cover.png" id="bgvid" playsinline autoplay muted loop>
+		<source src="images/work-video.mp4" type="video/mp4">
+
+	</video>
+
+	</div>
+
+<!-- CONTATO -->
+
+	<div id="contato">
+
+		<h1 id="titulo-contato">Vamos começar? Conte-nos sobre seu projeto.</h1>
+
+		 <div id="conteudo-contato">
+
+         	<div class="informacoes">
+          		<div class="mapa">
+            		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1104.3772163624312!2d-38.57937083391453!3d-3.7486469230122337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c74be7e0a50593%3A0x48159bb30b2fff2d!2sSistemas+e+M%C3%ADdias+Digitais!5e0!3m2!1spt-BR!2sbr!4v1559702608491!5m2!1spt-BR!2sbr" frameborder="0" style="border:0" allowfullscreen></iframe>
+            	</div>
+          	</div>
+
+          	<div id="contato-texto">
+          		<h3 class="call-to-action">Escreva</h3>
+          		<p class="contact-info">mosaicoaequipe@gmail.com</p>
+          		<h3 class="call-to-action">Visite</h3>
+            	<p class="contact-info">Endereço: Campus do Pici - Bloco 901 - 1º andar <br>CEP 60455-760 - Fortaleza - CE</p>
+          	</div>
+
+         </div>
+
+	</div>
+
+	<footer> © 2019 Mosaico</footer>
+
+</body>
+
+</html>

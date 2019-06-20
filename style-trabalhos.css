@@ -1,0 +1,166 @@
+@font-face {
+  font-family: barlow-negrito;
+  src: url(fonts/barlow-negrito.ttf);
+}
+
+@font-face {
+  font-family: barlow-regular;
+  src: url(fonts/barlow-regular.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+	margin: 0;
+	width: 100vw;
+}
+
+#homeicon{
+	position: fixed;
+	top: 5%;
+	left: 3%;
+	z-index: 3;
+	width: 3.5vw;
+	height: 3.5vw;
+}
+
+/*-------------------------------------PROTEASY-------------------------------------*/
+
+#proteasy{
+	width: 100vw;
+	height: 100vh;
+	background-color: #1e1e1e;
+	background-image: url('images/proteasy-bg.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#scroll-down{
+  position: absolute; 
+  bottom: 5%;
+  left: 50%;
+  width: 2vw;
+  height: 2vw;
+  animation: fadeIn;
+  animation-duration: 1s;
+  animation-iteration-count: 5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#projeto-descricao1{
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	right: 0%;
+	background-color: #1e1e1e;
+	opacity: 0.8;
+	color: white;
+	width: 25vw;
+	height: 100%;
+	padding-left: 3vw;
+	padding-right: 3vw;
+	animation: fadeInRight 0.8s;
+	cursor: context-menu;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#titulo-proteasy{
+	font-family: barlow-negrito;
+	font-size: 5vw;
+	text-align: right;
+	border-bottom: 1vw solid #22B5DD;
+}
+
+.descricao-projeto{
+	font-family: barlow-regular;
+	font-size: 1.6vw;
+}
+
+/*-------------------------------------MISE EN PLACE-------------------------------------*/
+
+#mise-en-place{
+	width: 100vw;
+	height: 100vh;
+	background-color: #1e1e1e;
+	background-image: url('images/mep-bg.gif');
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#projeto-descricao2{
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	left: 0%;
+	background-color: #1e1e1e;
+	opacity: 0.8;
+	color: white;
+	width: 25vw;
+	height: 100%;
+	padding-left: 3vw;
+	padding-right: 3vw;
+	animation: fadeInLeft 0.5s;
+	animation-play-state: paused;
+	cursor: context-menu;
+}
+
+/* O intuito aqui é fazer a animação da segunda apresentação só começar quando o usuário tiver na tela certa*/
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#mise-en-place:hover #projeto-descricao2{
+	animation-play-state: running;
+}
+
+#titulo-mep{
+	font-family: barlow-negrito;
+	font-size: 5vw;
+	text-align: right;
+	border-bottom: 1vw solid #57A35C;
+}
+
+footer{
+  color: white;
+  background-color:#1e1e1e;
+  font-family: barlow-regular;
+  font-size: 1.2vw;
+  padding-left: 3vw;
+}
